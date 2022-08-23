@@ -38,13 +38,13 @@ private final ConversionService conversionService;
 //final List<Hotel> hotel = hotelRepo.findHotelsByCity(input.getCity());
                     final String city = String.valueOf(hotelRepo.findHotelsByCity(input.getCity()));
                     final List<HotelConverter> hotels = new ArrayList<>();
-                    hotelRepo.findHotelsByCity(city).stream()
-                           // .map(h -> hotels.add(h, HotelConverter.class))
-                           // .collect(Collectors.toList());
-                            .forEach(h->{hotels.add(conversionService.convert(h,HotelConverter.class));});
+//                     hotelRepo.findHotelsByCity(city).stream()
+//                    .forEach(h->{hotels.add(conversionService.convert(h,HotelConverter.class));});
                     return HotelsByCityResponse.builder()
-                            .hotels(hotels)//.add(new Hotel("Grand hotel", city, true))
-                           // .hotelName("Grand hotel")
+                            .hotels(hotelRepo.findHotelsByCity(city).stream()
+                                    .map(h->conversionService.convert(h, HotelConverter.class))
+                                    .collect(Collectors.toList()))
+                            //.hotels(hotels)
                             .build();
                 }).toEither()
                 .mapLeft(throwable -> {

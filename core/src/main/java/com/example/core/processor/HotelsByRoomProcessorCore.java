@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class HotelsByRoomProcessorCore implements HotelsByRoomProcess {
@@ -34,10 +35,12 @@ public class HotelsByRoomProcessorCore implements HotelsByRoomProcess {
         return Try.of(() -> {
                     final String numberOfBeds = String.valueOf(hotelRepo.findHotelByRoom(input.getNumberOfBeds()));
                     final List<HotelConverter> hotels = new ArrayList<>();
-                    hotelRepo.findHotelByRoom(numberOfBeds).stream()
-                            .forEach(h->{hotels.add(conversionService.convert(h,HotelConverter.class));});
+//                    hotelRepo.findHotelByRoom(numberOfBeds).stream()
+//                            .forEach(h->{hotels.add(conversionService.convert(h,HotelConverter.class));});
                     return  HotelsByRoomResponse.builder()
-                            .hotels(hotels)
+                            .hotels(hotelRepo.findHotelByRoom(numberOfBeds).stream()
+                            .map(h->conversionService.convert(h, HotelConverter.class))
+                            .collect(Collectors.toList()))
                             .build();
                 }).toEither()
                 .mapLeft(throwable -> {
