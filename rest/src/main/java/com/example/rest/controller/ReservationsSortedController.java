@@ -1,4 +1,4 @@
-package com.example.rest.controller;
+/*package com.example.rest.controller;
 
 import com.example.api.base.Error;
 import com.example.api.model.number_of_reservation.NumberOfReservationsRequest;
@@ -28,3 +28,4 @@ public class ReservationsSortedController {
         return ResponseEntity.status(HttpStatus.OK).body(response.get());
     }
 }
+*/

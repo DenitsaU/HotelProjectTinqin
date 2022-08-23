@@ -13,6 +13,6 @@ import java.util.List;
 @Setter(AccessLevel.PRIVATE)
 @Getter
 public class HotelsByCityResponse implements OperationResult {
-public List<Hotel> hotels;
+public List<HotelConverter> hotels;
    // private String hotelName;
 }

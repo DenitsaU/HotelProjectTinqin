@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface HotelRepo extends JpaRepository<Hotel,Integer> {
     List<Hotel> findHotelsByCity(String city);
-//    Optional<Hotel> findHotelByRoom(Integer numberOfBeds);
+    List<Hotel> findHotelByRoom(String numberOfBeds);
 
     public List<Hotel> findAll();
 

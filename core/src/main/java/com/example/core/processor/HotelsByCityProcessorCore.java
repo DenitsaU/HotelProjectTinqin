@@ -7,6 +7,7 @@ import com.example.api.model.hotels_by_city.HotelsByCityRequest;
 import com.example.api.model.hotels_by_city.HotelsByCityResponse;
 import com.example.api.operation.HotelsByCityProcess;
 //import com.example.domain.entity.Hotel;
+import com.example.core.exception.CityNotFoundException;
 import com.example.domain.entity.Hotel;
 import com.example.domain.repository.HotelRepo;
 //import com.example.domain.repository.RoomRepo;
@@ -42,12 +43,12 @@ private final ConversionService conversionService;
                            // .collect(Collectors.toList());
                             .forEach(h->{hotels.add(conversionService.convert(h,HotelConverter.class));});
                     return HotelsByCityResponse.builder()
-                            .hotels.add(new Hotel("Grand hotel", city, true))
-                            .hotelName("Grand hotel")
+                            .hotels(hotels)//.add(new Hotel("Grand hotel", city, true))
+                           // .hotelName("Grand hotel")
                             .build();
                 }).toEither()
                 .mapLeft(throwable -> {
-//                    if (throwable instanceof NoSuchElementException) {
+//                    if (throwable instanceof CityNotFoundException) {
 //                        return new CityNotFound();
 //                    }
                     return new CityNotFound();

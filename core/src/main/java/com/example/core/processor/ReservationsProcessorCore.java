@@ -1,4 +1,4 @@
-package com.example.core.processor;
+/*package com.example.core.processor;
 
 import com.example.api.base.Error;
 import com.example.api.error.OperationFailed;
@@ -39,7 +39,8 @@ public class ReservationsProcessorCore implements NumberOfReservationsProcess {
             return NumberOfReservationsResponse.builder()
                     .allHotels(sortedHotels).build();
         }).toEither()
-                .mapLeft(throwable -> {return new OperationFailed();
+                .mapLeft(throwable -> {return new HotelNotFound();
                 });
     }
 }
+*/

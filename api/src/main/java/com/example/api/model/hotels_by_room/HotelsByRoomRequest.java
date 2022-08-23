@@ -8,6 +8,6 @@ import lombok.*;
 @Setter(AccessLevel.PRIVATE)
 @Getter
 public class HotelsByRoomRequest implements OperationInput {
-    private Integer numberOfBeds;
+    private String numberOfBeds;
 
 }

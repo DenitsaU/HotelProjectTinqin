@@ -1,4 +1,4 @@
-package com.example.core.processor;
+/*package com.example.core.processor;
 
 import com.example.api.base.Error;
 import com.example.api.error.CityNotFound;
@@ -47,3 +47,4 @@ public class FindAllProcessor implements HotelsByCityProcess {
     });
     }
 }
+*/
