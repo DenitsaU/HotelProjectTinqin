@@ -36,9 +36,7 @@ private final ConversionService conversionService;
 
     @Override
     public Either<Error, HotelsByCityResponse> process(final HotelsByCityRequest input) {
-        return Try.of(() -> {final Hotel hotel = new Hotel();
-                   // final String city = String.valueOf(hotelRepo.findHotelsByCity(String.valueOf(input.equals(hotel.getCity()))));
-                  //  final String city = String.valueOf(hotelRepo.findHotelsByCity(input.getCity()));
+        return Try.of(() -> {//final Hotel hotel = new Hotel();
                     final String city = input.getCity();
                     final List<HotelConverter> hotels = new ArrayList<>();
                     return HotelsByCityResponse.builder()

@@ -1,4 +1,4 @@
-/*package com.example.rest.controller;
+package com.example.rest.controller;
 
 import com.example.api.base.Error;
 import com.example.api.model.number_of_reservation.NumberOfReservationsRequest;
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ReservationsSortedController {
+public class ReservationsByHotelController {
     private  final NumberOfReservationsProcess numberOfReservationsProcess;
 
-    public ReservationsSortedController(NumberOfReservationsProcess numberOfReservationsProcess) {
+    public ReservationsByHotelController(NumberOfReservationsProcess numberOfReservationsProcess) {
         this.numberOfReservationsProcess = numberOfReservationsProcess;
     }
 
-    @PostMapping("/sortedHotelsByReservations")
-    public ResponseEntity<?> sortHotelsByReservations(@RequestBody final NumberOfReservationsRequest numberOfReservationsRequest) {
+    @PostMapping("/numberOfReservationsByHotel")
+    public ResponseEntity<?> getReservationsByHotel(@RequestBody final NumberOfReservationsRequest numberOfReservationsRequest) {
         Either<Error, NumberOfReservationsResponse> response = numberOfReservationsProcess.process(numberOfReservationsRequest);
         if (response.isLeft()) {
             return ResponseEntity.status(response.getLeft().getCode()).body(response.getLeft().getMessage());
@@ -28,4 +28,3 @@ public class ReservationsSortedController {
         return ResponseEntity.status(HttpStatus.OK).body(response.get());
     }
 }
-*/

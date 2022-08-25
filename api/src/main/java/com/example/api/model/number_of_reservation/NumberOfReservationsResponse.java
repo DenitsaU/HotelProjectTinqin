@@ -15,5 +15,5 @@ import java.util.List;
 @Builder
 public class NumberOfReservationsResponse implements OperationResult {
    //private Integer numberOfReservations;
-    private List<HotelConverter>allHotels;
+    private List<ReservationConverter>reservations;
 }

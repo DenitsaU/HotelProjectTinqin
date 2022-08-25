@@ -4,10 +4,10 @@ import com.example.api.base.OperationInput;
 import lombok.*;
 
 @AllArgsConstructor
-//@NoArgsConstructor
+@NoArgsConstructor
 @Setter(AccessLevel.PRIVATE)
 @Getter
 public class NumberOfReservationsRequest implements OperationInput {
-    //private Integer hotelID;
+    private Integer hotelID;
   //  private String sorted;
 }
