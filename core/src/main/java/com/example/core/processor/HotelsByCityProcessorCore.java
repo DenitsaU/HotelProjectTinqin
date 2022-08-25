@@ -15,6 +15,7 @@ import io.vavr.control.Either;
 import io.vavr.control.Try;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@EnableSwagger2
 public class HotelsByCityProcessorCore implements HotelsByCityProcess {
 private final HotelRepo hotelRepo;
 private final ConversionService conversionService;
@@ -34,23 +36,22 @@ private final ConversionService conversionService;
 
     @Override
     public Either<Error, HotelsByCityResponse> process(final HotelsByCityRequest input) {
-        return Try.of(() -> {
-//final List<Hotel> hotel = hotelRepo.findHotelsByCity(input.getCity());
-                    final String city = String.valueOf(hotelRepo.findHotelsByCity(input.getCity()));
+        return Try.of(() -> {final Hotel hotel = new Hotel();
+                   // final String city = String.valueOf(hotelRepo.findHotelsByCity(String.valueOf(input.equals(hotel.getCity()))));
+                  //  final String city = String.valueOf(hotelRepo.findHotelsByCity(input.getCity()));
+                    final String city = input.getCity();
                     final List<HotelConverter> hotels = new ArrayList<>();
-//                     hotelRepo.findHotelsByCity(city).stream()
-//                    .forEach(h->{hotels.add(conversionService.convert(h,HotelConverter.class));});
                     return HotelsByCityResponse.builder()
                             .hotels(hotelRepo.findHotelsByCity(city).stream()
+                                    .filter(h->h.getCity().equals(city))
                                     .map(h->conversionService.convert(h, HotelConverter.class))
                                     .collect(Collectors.toList()))
-                            //.hotels(hotels)
                             .build();
                 }).toEither()
                 .mapLeft(throwable -> {
-//                    if (throwable instanceof CityNotFoundException) {
-//                        return new CityNotFound();
-//                    }
+                    if (throwable instanceof CityNotFoundException) {
+                        return new CityNotFound();
+                    }
                     return new CityNotFound();
                 });
 

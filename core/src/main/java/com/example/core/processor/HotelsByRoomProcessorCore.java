@@ -1,4 +1,4 @@
-package com.example.core.processor;
+/*package com.example.core.processor;
 
 import com.example.api.base.Error;
 import com.example.api.error.RoomNotFound;
@@ -24,8 +24,8 @@ public class HotelsByRoomProcessorCore implements HotelsByRoomProcess {
   //  private final RoomRepo roomRepo;
     private final ConversionService conversionService;
 
-    public HotelsByRoomProcessorCore(HotelRepo hotelRepo/*, RoomRepo roomRepo*/, ConversionService conversionService) {
-        this.hotelRepo = hotelRepo;
+    public HotelsByRoomProcessorCore(HotelRepo hotelRepo/*, RoomRepo roomRepo*///, ConversionService conversionService) {
+ /*       this.hotelRepo = hotelRepo;
       //  this.roomRepo = roomRepo;
         this.conversionService = conversionService;
     }
@@ -50,4 +50,4 @@ public class HotelsByRoomProcessorCore implements HotelsByRoomProcess {
                     return new RoomNotFound();
                 });
     }
-}
+}*/

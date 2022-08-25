@@ -1,4 +1,4 @@
-package com.example.rest.controller;
+/*package com.example.rest.controller;
 
 import com.example.api.base.Error;
 import com.example.api.model.hotels_by_room.HotelsByRoomRequest;
@@ -29,3 +29,4 @@ public class HotelsByRoomController {
         return ResponseEntity.status(HttpStatus.OK).body(response.get());
     }
 }
+*/

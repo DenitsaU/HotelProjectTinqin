@@ -6,10 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-@Repository
+//@Repository
 public interface HotelRepo extends JpaRepository<Hotel,Integer> {
     List<Hotel> findHotelsByCity(String city);
-    List<Hotel> findHotelByRoom(String numberOfBeds);
+ //   List<Hotel> findHotelByRoom(String numberOfBeds);
 
     public List<Hotel> findAll();
 
